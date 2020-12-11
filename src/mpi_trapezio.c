@@ -49,7 +49,7 @@ int etiq = 3;               /* Uma etiqueta qualquer */
     /* Imprime o resultado */
     if (meu_ranque == 0) {
         tempo_final = MPI_Wtime();
-        printf("Foram gastos %3,1f segundos\n",tempo_final-tempo_inicial);
+        printf("Foram gastos %3.1f segundos\n",tempo_final-tempo_inicial);
         printf("Com n = %ld trapezoides, a estimativa\n", n);
         printf("da integral de %lf até %lf = %lf \n", a, b, total);
     }

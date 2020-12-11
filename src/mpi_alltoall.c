@@ -4,7 +4,7 @@
 
 int main(int argc, char *argv[]) { /* mpi_alltoall.c  */
 int i, meu_ranque, num_procs;
-int* vetor_entrada, vetor_saida;
+int *vetor_entrada, *vetor_saida;
 
     MPI_Init(&argc, &argv);
     MPI_Comm_rank(MPI_COMM_WORLD, &meu_ranque);

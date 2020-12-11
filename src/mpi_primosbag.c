@@ -17,7 +17,6 @@ double t_inicial, t_final;
 int cont = 0, total = 0;
 int i, n;
 int meu_ranque, num_procs, inicio, dest, raiz=0, tag=1, stop=0;
-int ordem =0;
 MPI_Status status;
 /* Verifica o número de argumentos passados */
 	if (argc < 2) {

@@ -3,8 +3,8 @@
 #define TAM 10
 
 int main(int argc, char *argv[]) { /* mpi_maxloc.c  */
-int meu_ranque, num_procs; /* O ranque e o número de processos */
-int i, raiz = 0;           /* Todas as mensagens vão para 0 */
+int meu_ranque;                    /* O ranque e o número de processos */
+int i, raiz = 0;                   /* Todas as mensagens vão para 0 */
 int indice[10];
 double vetor_entrada[TAM] = {0.0,1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0};
 double  vetor_saida[TAM];
@@ -12,7 +12,6 @@ struct {
      double valor;
      int   ranque;
 } entrada[10], saida[10];
-MPI_Status estado;
 
     MPI_Init(&argc, &argv);
     MPI_Comm_rank(MPI_COMM_WORLD, &meu_ranque);

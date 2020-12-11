@@ -1,0 +1,24 @@
+#
+# Makefile 
+# Compila e gera os executáveis de todos os arquivos com extensão .c
+# presentes no diretório
+#
+CC=mpicc
+CFLAGS = -O3 -Wall
+LDLIBS=-lm
+RM=rm -vf
+MV=mv
+BINDIR=./bin/
+
+SRCFILES= $(wildcard *.c)
+OBJFILES= $(patsubst %.c, %.o, $(SRCFILES))
+PROGFILES= $(patsubst %.c, %, $(SRCFILES))
+
+.PHONY: all clean
+
+all: $(PROGFILES)
+	mv $(PROGFILES) $(BINDIR)
+
+clean:
+	$(RM) $(OBJFILES) $(PROGFILES) *~
+## eof Makefile

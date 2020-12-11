@@ -2,7 +2,7 @@
 #include "mpi.h"
 
 int main(int argc, char *argv[]) { /* mpi_bcast.c  */
-int i, valor, meu_ranque, raiz = 0;
+int valor, meu_ranque, raiz = 0;
 
     MPI_Init(&argc, &argv);
     MPI_Comm_rank(MPI_COMM_WORLD, &meu_ranque);

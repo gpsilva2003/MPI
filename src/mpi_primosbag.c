@@ -17,7 +17,7 @@ double t_inicial, t_final;
 int cont = 0, total = 0;
 int i, n;
 int meu_ranque, num_procs, inicio, dest, raiz=0, tag=1, stop=0;
-MPI_Status status;
+MPI_Status estado;
 /* Verifica o número de argumentos passados */
 	if (argc < 2) {
         printf("Entre com o valor do maior inteiro como parâmetro para o programa.\n");
@@ -43,9 +43,9 @@ MPI_Status status;
         }
 /* Fica recebendo as contagens parciais de cada processo */
         while (stop < (num_procs-1)) {
-		    MPI_Recv(&cont, 1, MPI_INT, MPI_ANY_SOURCE, MPI_ANY_TAG, MPI_COMM_WORLD, &status);
+		    MPI_Recv(&cont, 1, MPI_INT, MPI_ANY_SOURCE, MPI_ANY_TAG, MPI_COMM_WORLD, &estado);
             total += cont;
-            dest = status.MPI_SOURCE;
+            dest = estado.MPI_SOURCE;
             if (inicio > n) {
                 tag = 99;
                 stop++;
@@ -57,9 +57,9 @@ MPI_Status status;
     }       
     else { 
 /* Cada processo escravo recebe o início do espaço de busca */
-        while (status.MPI_TAG != 99) {
-            MPI_Recv(&inicio, 1, MPI_INT, raiz, MPI_ANY_TAG, MPI_COMM_WORLD, &status);
-            if (status.MPI_TAG != 99) {
+        while (estado.MPI_TAG != 99) {
+            MPI_Recv(&inicio, 1, MPI_INT, raiz, MPI_ANY_TAG, MPI_COMM_WORLD, &estado);
+            if (estado.MPI_TAG != 99) {
                 for (i = inicio, cont=0; i < (inicio + TAMANHO) && i < n; i+=2) 
 		            if (primo(i) == 1)
                         cont++;

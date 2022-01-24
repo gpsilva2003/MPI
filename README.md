@@ -5,13 +5,13 @@ Programação Paralela - Editora Casa do Código - 2022. Adicionalmente
 apresentamos um texto de apoio para a preparação do ambiente de 
 execução.
 
-## Preparação do ambiente de execução MPI {#sec:app_mpi_preparacao}
+## Preparação do ambiente de execução MPI
 
 Apresentamos aqui um breve roteiro sobre a instalação e configuração da
 biblioteca MPI, assim como executar um programa MPI em algumas
 distribuições de sistemas operacionais Posix.
 
-### Introdução {#sec:app_mpi_introducao}
+### Introdução 
 
 Primeiro devemos considerar que há várias implementações disponíveis
 para o MPI, algumas gratuitas e outras comerciais. O processador e a
@@ -120,7 +120,7 @@ Maiores informações sobre o OpenMPI e MPICH podem ser obtidas em
 <https://github.com/open-mpi/ompi/blob/master/README.md> e
 <https://www.mpich.org/documentation/guides/>, respectivamente.
 
-### Instalação {#sec:app_mpi_instalacao}
+### Instalação 
 
 Vamos considerar como instalar e configurar as duas
 distribuições mais importantes disponíveis como software de código
@@ -147,7 +147,7 @@ diretamente a partir do repositório:
     $ sudo dnf install mpich-devel
     ```
 
-#### Ubuntu, Debian e similares {#ubuntu-debian-e-similares .unnumbered}
+#### Ubuntu, Debian e similares
 
 -   **OpenMPI**
 
@@ -169,7 +169,7 @@ diretamente a partir do repositório:
     $ sudo apt-get install libmpich-devel
     ```
 
-#### MacOS {#macos .unnumbered}
+#### MacOS 
 
 -   **OpenMPI**
 
@@ -203,7 +203,7 @@ diretamente a partir do repositório:
     $ brew install mpich
     ```
 
-### Compilação {#sec:app_mpi_compilacao}
+### Compilação 
 
 Para compilar um arquivo fonte prog.c, digite:
 
@@ -219,7 +219,7 @@ $ mpif77 -o prog prog.f
 $ mpif90 -o prog prog.f90
 ```
 
-### Configurando o SSH {#sec:app_mpi_ssh}
+### Configurando o SSH 
 
 Para a execução em ambientes com um pequeno número de máquinas
 conectadas via rede, é importante configurar o ambiente para que não
@@ -286,7 +286,7 @@ maquina2:~$ cd ~/.ssh
 maquina2:~/.ssh$ cat id_rsa.pub >> authorized_keys
 ```
 
-#### Executando um programa {#executando-um-programa .unnumbered}
+#### Executando um programa 
 
 Para executar o programa, digamos, com 4 processos, devemos copiar o
 executável para o seu diretório de trabalho e digitar:
@@ -326,7 +326,7 @@ precedidos com o caractere "\#". Para saber mais opções, digite:
 $ mpiexec --help
 ```
 
-#### Gerenciador de Recursos {#gerenciador-de-recursos .unnumbered}
+#### Gerenciador de Recursos 
 
 Gerenciadores de recursos como SGE, PBS, SLURM são comuns em muitos
 *clusters* gerenciados. Nesse caso, o MPI detecta a sua existência e

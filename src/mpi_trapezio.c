@@ -12,7 +12,7 @@ int main(int argc, char *argv[]) { /* mpi_trapezio.c  */
 int meu_ranque, num_procs;  /* respectivamente q e p */
 double a = 0.0,  b = 1.0;   /* Limites da integral */
 double tempo_inicial, tempo_final; /* Tempo de execução */
-long int n = 100000000;     /* Número de trapezoides */
+long int n = 500000000;     /* Número de trapezoides */
 double x, h;                /* x e h, a base do trapezoide */
 double integral=0.0, total; /* Integral de cada processo e total */
 int origem, destino = 0;    /* Origem e destino das mensagens */
@@ -25,8 +25,8 @@ int etiq = 3;               /* Uma etiqueta qualquer */
     /* h é o mesmo para todos os processos */
     h = (b - a)/n;   
     /* O processo 0 calcula o valor de f(x)/2 em a e b */
+    tempo_inicial = MPI_Wtime(); 
     if (meu_ranque == 0) {
-        tempo_inicial = MPI_Wtime(); 
         integral = (f(a) + f(b))/2.0;
     }
     /* Cada processo calcula a integral aprox. sobre n/num_procs trapézios */ 
@@ -44,12 +44,13 @@ int etiq = 3;               /* Uma etiqueta qualquer */
     } 
      /* Os demais processos enviam as integrais parciais para o processo 0 */
     else {
+        tempo_final = MPI_Wtime();
         MPI_Send(&integral, 1, MPI_DOUBLE, destino, etiq, MPI_COMM_WORLD);
     }
     /* Imprime o resultado */
     if (meu_ranque == 0) {
         tempo_final = MPI_Wtime();
-        printf("Foram gastos %3.1f segundos\n",tempo_final-tempo_inicial);
+        printf("Foram gastos %3.5f segundos\n",tempo_final-tempo_inicial);
         printf("Com n = %ld trapezoides, a estimativa\n", n);
         printf("da integral de %lf até %lf = %lf \n", a, b, total);
     }

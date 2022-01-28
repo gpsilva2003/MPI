@@ -1,12 +1,12 @@
 #include <mpi.h>
 #include <stdio.h>
 #include <stdlib.h>
-#define MAX 100
+#define MAX 1000
 
 int main(int argc, char *argv[]) { /* mpi_probe.c  */
 int meu_ranque, num_procs, etiq=0;
 int* vet_num;
-int total_num, origem=0, destino=1, numeros[MAX];
+int total_num, origem, destino=1, numeros[MAX];
 MPI_Status estado;
 
     MPI_Init(&argc, &argv);
@@ -22,11 +22,13 @@ MPI_Status estado;
     else 
         if (meu_ranque == destino) {
     /* Verifica se chegou mensagem do processo origem */
-            MPI_Probe(origem, etiq, MPI_COMM_WORLD, &estado);
+            MPI_Probe(MPI_ANY_SOURCE, MPI_ANY_TAG, MPI_COMM_WORLD, &estado);
     /* Obtém o tamanho da mensagem através do manipulador "estado" */
             MPI_Get_count(&estado, MPI_INT, &total_num);
     /* Aloca um vetor para guardar os números transmitidos */
             vet_num = (int*) malloc(sizeof(int)*total_num);
+	    origem = estado.MPI_SOURCE;
+	    etiq = estado.MPI_TAG;
     /* Agora recebe a mensagem com o vetor previamente alocado  */
             MPI_Recv(vet_num, total_num, MPI_INT, origem, etiq, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
         printf("Processo %d recebeu dinamicamente %d números de %d.\n", destino, total_num, origem);

@@ -14,7 +14,8 @@ float soma_global, dif_quad_global, desvio_padrao;
    MPI_Comm_rank(MPI_COMM_WORLD, &meu_ranque);
    MPI_Comm_size(MPI_COMM_WORLD, &num_procs);
    /* Alimenta o gerador de números aleatórios com valores diferentes para cada processo */
-   srand(MPI_Wtime()*(meu_ranque+1));
+   //srand(MPI_Wtime()*(meu_ranque+1));
+   srand(meu_ranque+meu_ranque*meu_ranque);
    /* Cria um vetor de números aleatórios em todos os processos. Cada número tem um valor entre 0 e 1 */
    nums_aleat  = (float *)malloc(sizeof(float) * NELEM);
    for (i = 0; i < NELEM; i++) 
@@ -31,12 +32,10 @@ float soma_global, dif_quad_global, desvio_padrao;
    for (i = 0; i < NELEM; i++) 
    dif_quad_local += (nums_aleat[i] - media) * (nums_aleat[i] - media);
    /* Reduz a soma global do quadrado das diferenças locais para o processo raiz imprimir a resposta */
-   MPI_Reduce(&dif_quad_local, &dif_quad_global, 1, MPI_FLOAT, MPI_SUM, 0, MPI_COMM_WORLD);
+   MPI_Allreduce(&dif_quad_local, &dif_quad_global, 1, MPI_FLOAT, MPI_SUM, MPI_COMM_WORLD);
    /* O desvio padrão é a raiz quadrada da média do quadrado das diferenças */
-   if (meu_ranque == 0) {
        desvio_padrao = sqrt(dif_quad_global/(NELEM  * num_procs));
-       printf("Média - %f, Desvio padrão  = %f\n", media, desvio_padrao);
-   }
+       printf("Média - %f, Desvio padrão  = %f Meu ranque= %d\n", media, desvio_padrao, meu_ranque);
    /* Libera espaço do vetor */
    free(nums_aleat);
    MPI_Finalize();

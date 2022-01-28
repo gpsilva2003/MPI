@@ -14,9 +14,9 @@ float media, media_local ;
    MPI_Init(&argc, &argv);
    MPI_Comm_rank(MPI_COMM_WORLD, &meu_ranque);
    MPI_Comm_size(MPI_COMM_WORLD, &num_procs);
-   /* Alimenta o gerador de números aleatórios com valores diferentes para cada processo */
-   srand(MPI_Wtime()*(meu_ranque+1));
-   /* Cria um vetor de números aleatórios em todos os processos. Cada número tem um valor entre 0 e 1 */
+   /* Sementes diferentes para cada processo  */
+   srand(meu_ranque+meu_ranque*meu_ranque);
+   /* Cria um vetor de números aleatórios em cada processo */
    sub_nums_aleat  = (float *)malloc(sizeof(float) * NELEM);
    for (i = 0; i < NELEM; i++) 
         sub_nums_aleat[i] = (rand() / (float)RAND_MAX);

@@ -3,7 +3,7 @@
 #include "mpi.h"
 #define MAX 100
 
-int main(int argc, char *argv[]) { /* mpi_aleatorio.c  */
+int main(int argc, char *argv[]) { /* mpi_status.c  */
 int meu_ranque, total_num, etiq = 0;
 int origem=0, destino=1, numeros[MAX];
 MPI_Status estado;

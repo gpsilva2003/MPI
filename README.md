@@ -205,25 +205,25 @@ diretamente a partir do repositório:
 
 #### Windows
 
-	No Windows, a opção preferencial é usar o emulador de terminal Cygwin ou o Windows Subsystem 
-	para Linux (WSL) para Windows 10. Ambos fornecem uma interface semelhante à maioria dos clusters HPC.
+    No Windows, a opção preferencial é usar o emulador de terminal Cygwin ou o Windows Subsystem 
+    para Linux (WSL) para Windows 10. Ambos fornecem uma interface semelhante à maioria dos clusters HPC.
 
-	Se você decidir usar o Cygwin, precisará instalar alguns pacotes usando o instalador do Cygwin. 
-	Se você já tem o Cygwin instalado, você deve executar o instalador e certificar-se de que os 
-	seguintes pacotes estejam selecionados:
+    Se você decidir usar o Cygwin, precisará instalar alguns pacotes usando o instalador do Cygwin. 
+    Se você já tem o Cygwin instalado, você deve executar o instalador e certificar-se de que os 
+    seguintes pacotes estejam selecionados:
 
-	- gcc-core e gcc-fortran
-	- openmpi, libopenmpi40, libopenmpihf08_40, libopenmpiusef08_40, openmpi-devel e openmpi-devel.
-	- zlib e zlib-devel
-	- make e cmake
-	- git
-	- vim ou seu editor de texto preferido
+    - gcc-core e gcc-fortran
+    - openmpi, libopenmpi40, libopenmpihf08_40, libopenmpiusef08_40, openmpi-devel e openmpi-devel.
+    - zlib e zlib-devel
+    - make e cmake
+    - git
+    - vim ou seu editor de texto preferido
 
-	Você pode verificar se funciona compilando qualquer programa C ou Fortran usando o compilador *mpicc* ou *mpifort*.
+    Você pode verificar se funciona compilando qualquer programa C ou Fortran usando o compilador *mpicc* ou *mpifort*.
 
-	No Windows, se você usar o Visual Studio, poderá instalar o Microsoft MPI. O download inclui dois arquivos, 
-	msmpisetup.exe e msmpisdk.msi. Baixe e execute os dois instaladores. Siga estas instruções para criar um projeto 
-	com o compilador e a biblioteca MPI.
+    No Windows, se você usar o Visual Studio, poderá instalar o Microsoft MPI. O download inclui dois arquivos, 
+    msmpisetup.exe e msmpisdk.msi. Baixe e execute os dois instaladores. Siga estas instruções para criar um projeto 
+    com o compilador e a biblioteca MPI.
 
 ### Compilação 
 

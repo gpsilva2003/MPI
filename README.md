@@ -128,7 +128,7 @@ aberto e gratuitas: OpenMPI e MPICH. Felizmente a maioria das
 distribuições Linux já conta pacotes disponíveis para instalação dessas
 versões, o que torna muito mais fácil esta tarefa.
 
-#### Fedora, CentOS e similares {#fedora-centos-e-similares .unnumbered}
+#### Fedora, CentOS e similares 
 
 Basicamente, os diversos tipos de implementação MPI podem ser instalados
 diretamente a partir do repositório:

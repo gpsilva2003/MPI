@@ -4,14 +4,13 @@
 #include <math.h>
 #define BLOCO 500000  // Bloco de trabalho, deve ser par
 
-int primo (long int n) { /* mpi_primos.c  */
-
+int primo (long int n) { 
         for (long int i = 3; i < (sqrtl(n) + 1); i += 2)
                 if(n%i == 0) return 0;
         return 1;
 }
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[]) {  /* mpi_primos2.c  */
         double t_inicial, t_final;
         int cont = 0, total = 0;
         long int inicio, n;
